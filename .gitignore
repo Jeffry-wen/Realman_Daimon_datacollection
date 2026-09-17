@@ -1,0 +1,30 @@
+# Local machine configuration. Commit only the example profile.
+config/*.env
+!config/*.env.example
+.env
+.env.*
+
+# Captured data and generated artifacts must never enter Git.
+dataset/
+datasets/
+outputs/
+logs/
+run/
+tmp/
+*.log
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.parquet
+
+# Python and editor state.
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.vscode/
+.idea/

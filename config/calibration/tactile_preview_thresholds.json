@@ -1,0 +1,153 @@
+{
+  "source_dataset": "local/calibration_dataset_20260625_135512",
+  "threshold_policy": "Each tactile stream uses q99 of preview intensity from the provided minimal-contact recording; live preview sets values below threshold to zero.",
+  "preview_intensity_definition": {
+    "depth": "relu((depth - fixed_stream_reference_depth) - noise_sigma * fixed_stream_MAD_scale_depth)",
+    "shear": "sqrt(soft_threshold(dx - fixed_stream_reference_dx)^2 + soft_threshold(dy - fixed_stream_reference_dy)^2)",
+    "intensity": "depth_weight * depth + shear_weight * shear",
+    "units": "raw saved X5 depth_deformation video values, matching live preview input scale"
+  },
+  "percentile": 99.0,
+  "noise_sigma": 8.0,
+  "depth_weight": 1.0,
+  "shear_weight": 0.35,
+  "frame_stride": 1,
+  "thresholds": {
+    "depth_deformation.tactile_left_left": {
+      "threshold": 17.5,
+      "q99": 17.5,
+      "q90": 6.549999713897705,
+      "q95": 9.350000381469727,
+      "q99.5": 23.549999237060547,
+      "max": 59.849998474121094,
+      "mean_positive": 3.30679988861084,
+      "threshold_raw": 17.5,
+      "threshold_decoded": 0.0175,
+      "reference_raw": [
+        0.0,
+        30000.0,
+        30000.0
+      ],
+      "noise_scale_raw": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "noise_scale_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frames_used": 855,
+      "positive_pixels": 5670888,
+      "tactile_key": "depth_deformation.tactile_left_left"
+    },
+    "depth_deformation.tactile_left_right": {
+      "threshold": 17.799999237060547,
+      "q99": 17.799999237060547,
+      "q90": 7.449999809265137,
+      "q95": 10.399999618530273,
+      "q99.5": 22.43467140197754,
+      "max": 104.30000305175781,
+      "mean_positive": 3.588740825653076,
+      "threshold_raw": 17.799999237060547,
+      "threshold_decoded": 0.017799999237060545,
+      "reference_raw": [
+        0.0,
+        30000.0,
+        30000.0
+      ],
+      "noise_scale_raw": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "noise_scale_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frames_used": 855,
+      "positive_pixels": 6019985,
+      "tactile_key": "depth_deformation.tactile_left_right"
+    },
+    "depth_deformation.tactile_right_left": {
+      "threshold": 23.0,
+      "q99": 23.0,
+      "q90": 10.350000381469727,
+      "q95": 14.149999618530273,
+      "q99.5": 26.5,
+      "max": 55.05406951904297,
+      "mean_positive": 4.679296016693115,
+      "threshold_raw": 23.0,
+      "threshold_decoded": 0.023,
+      "reference_raw": [
+        0.0,
+        30000.0,
+        30000.0
+      ],
+      "noise_scale_raw": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "noise_scale_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frames_used": 855,
+      "positive_pixels": 7071638,
+      "tactile_key": "depth_deformation.tactile_right_left"
+    },
+    "depth_deformation.tactile_right_right": {
+      "threshold": 17.700000762939453,
+      "q99": 17.700000762939453,
+      "q90": 7.549999713897705,
+      "q95": 10.350000381469727,
+      "q99.5": 24.960285186767578,
+      "max": 71.39031982421875,
+      "mean_positive": 3.7867884635925293,
+      "threshold_raw": 17.700000762939453,
+      "threshold_decoded": 0.01770000076293945,
+      "reference_raw": [
+        0.0,
+        30000.0,
+        30000.0
+      ],
+      "noise_scale_raw": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "noise_scale_decoded": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frames_used": 855,
+      "positive_pixels": 6597796,
+      "tactile_key": "depth_deformation.tactile_right_right"
+    }
+  }
+}

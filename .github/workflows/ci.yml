@@ -1,0 +1,46 @@
+name: Capture bundle CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-test.txt
+
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements-test.txt
+
+      - name: Check shell syntax
+        run: >-
+          bash -n
+          scripts/run_capture.sh
+          scripts/verify_bundle.sh
+          scripts/capture_realman_x5_force_aligned_app.sh
+          scripts/capture_realman_x5_force_app.sh
+          scripts/stop_capture_app.sh
+
+      - name: Compile Python entry points
+        run: >-
+          python -m py_compile
+          scripts/preflight_capture.py
+          scripts/capture_realman_x5_force_aligned_app.py
+          scripts/capture_realman_x5_force_app.py
+          scripts/listen_foot_pedal.py
+          capture_support/tactile_frame_bridge.py
+
+      - name: Run hardware-free tests
+        run: python -m unittest -v tests.test_capture_partial_leader_fallback
